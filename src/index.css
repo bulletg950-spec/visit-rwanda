@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { color-scheme: light; }
+html { scroll-behavior: smooth; }
+body { @apply bg-forest-950 font-sans text-white antialiased; }
+::selection { background: #c9a24b; color: #06170f; }
+:focus-visible { outline: 2px solid #c9a24b; outline-offset: 2px; }
+
+@layer components {
+  .glass { @apply border border-white/15 bg-white/10 backdrop-blur-xl shadow-[0_8px_32px_rgba(0,0,0,.25)]; }
+  .glass-strong { @apply border border-white/20 bg-forest-900/60 backdrop-blur-2xl shadow-[0_10px_40px_rgba(0,0,0,.35)]; }
+  .glass-light { @apply border border-white/60 bg-white/70 backdrop-blur-xl text-charcoal-900; }
+  .liquid { position: relative; overflow: hidden; }
+  .liquid::before { content: ''; position: absolute; inset: 0; background: radial-gradient(120% 80% at 10% 0%, rgba(255,255,255,.28), transparent 55%); pointer-events: none; }
+  .btn { @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold transition duration-300 disabled:cursor-not-allowed disabled:opacity-50 active:scale-95; }
+  .btn-gold { @apply btn bg-gradient-to-r from-gold-400 to-gold-500 text-forest-950 hover:shadow-[0_0_30px_rgba(201,162,75,.55)]; }
+  .btn-glass { @apply btn glass hover:bg-white/20; }
+  .btn-blue { @apply btn bg-rwblue-500 text-white hover:bg-rwblue-400; }
+  .btn-danger { @apply btn bg-red-600/80 text-white hover:bg-red-600; }
+  .input { @apply w-full rounded-xl border border-white/20 bg-white/10 px-4 py-3 text-sm text-white placeholder-white/50 outline-none transition focus:border-gold-400 focus:bg-white/15; }
+  .input option { color: #15181a; }
+  .label { @apply mb-1.5 block text-xs font-medium uppercase tracking-wider text-white/70; }
+  .section { @apply mx-auto w-full max-w-7xl px-5 py-20 sm:px-8 lg:py-28; }
+  .eyebrow { @apply text-xs font-semibold uppercase tracking-[0.3em] text-gold-400; }
+  .h2 { @apply font-display text-3xl font-medium leading-tight sm:text-5xl; }
+  .badge { @apply inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-[11px] font-semibold; }
+}
+.text-gradient { background: linear-gradient(90deg, #e6cd8a, #33b3e6, #e6cd8a); background-size: 200% 100%; -webkit-background-clip: text; background-clip: text; color: transparent; animation: shimmer 6s linear infinite; }
+.hide-scroll::-webkit-scrollbar { display: none; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; scroll-behavior: auto !important; } }
