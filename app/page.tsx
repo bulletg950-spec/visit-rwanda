@@ -1,47 +1,16 @@
+import { BookingForm } from '@/components/booking-form'
+
+const tours = [
+  { id: 'volcanoes', name: 'Volcanoes & mountain gorillas', region: 'Northern Rwanda', duration: '3 days', price: '$1,280', image: 'https://images.unsplash.com/photo-1547970810-dc1cae2d5d42?auto=format&fit=crop&w=1200&q=85', text: 'Meet mountain gorillas in the mist and share quiet trails with local guides.' },
+  { id: 'akagera', name: 'Akagera safari escape', region: 'Eastern Rwanda', duration: '2 days', price: '$860', image: 'https://images.unsplash.com/photo-1516426122078-c23e76319801?auto=format&fit=crop&w=1200&q=85', text: 'Open-water lakes, golden savannah, and Rwanda’s Big Five in one restorative escape.' },
+  { id: 'nyungwe', name: 'Nyungwe forest canopy', region: 'Southern Rwanda', duration: '3 days', price: '$940', image: 'https://images.unsplash.com/photo-1511497584788-876760111969?auto=format&fit=crop&w=1200&q=85', text: 'Walk above an ancient rainforest and discover chimpanzees, orchids, and rare birds.' },
+]
+
 export default function Page() {
-  return (
-    <main
-      style={{
-        colorScheme: 'light dark',
-        position: 'relative',
-        display: 'flex',
-        minHeight: '100vh',
-        alignItems: 'center',
-        justifyContent: 'center',
-        backgroundColor: 'light-dark(#fff, #000)',
-        color: 'light-dark(#000, #fff)',
-      }}
-    >
-      <svg
-        aria-hidden="true"
-        style={{ width: 80, height: 80 }}
-        width={80}
-        height={80}
-        fill="none"
-        viewBox="0 0 20 20"
-        xmlns="http://www.w3.org/2000/svg"
-        stroke="currentColor"
-        strokeWidth="0.5"
-      >
-        <path
-          d="M14.2 14.2H17V6.9375C17 4.76288 15.2371 3 13.0625 3H5.8V5.8M14.2 14.2V7.79063L7.79062 14.2H14.2ZM14.2 14.2V17H6.9375C4.76288 17 3 15.2371 3 13.0625V5.8H5.8M5.8 5.8V12.2313L12.2313 5.8H5.8Z"
-          strokeLinejoin="round"
-        />
-      </svg>
-      <p
-        style={{
-          position: 'absolute',
-          left: '50%',
-          top: 'calc(50% + 56px)',
-          transform: 'translateX(-50%)',
-          whiteSpace: 'nowrap',
-          fontSize: '14px',
-          fontWeight: 500,
-          color: 'light-dark(#71717a, #a1a1aa)',
-        }}
-      >
-        Your v0 generation will show here.
-      </p>
-    </main>
-  )
+  return <main><section className="hero"><nav><a className="brand" href="#top"><span>RW</span> Rwanda Discovery</a><div className="nav-links"><a href="#tours">Journeys</a><a href="#story">Our approach</a><a className="nav-cta" href="#plan">Start planning</a></div></nav><div className="hero-copy" id="top"><p className="eyebrow">The land of a thousand hills</p><h1>Go deeper.<br /><em>Feel more.</em></h1><p className="hero-lede">Thoughtful journeys through Rwanda, shaped by the people, landscapes, and moments you’ll remember long after you return.</p><a className="button button-light" href="#tours">Explore journeys <span>↓</span></a></div><div className="hero-note">01 <span /> Crafted in Rwanda</div></section>
+    <section className="intro" id="story"><p className="eyebrow">Travel with intention</p><h2>Rwanda stays with you.</h2><p className="intro-copy">We believe the best journeys leave a light footprint and a lasting impression. Our local team connects you with the real Rwanda — its wild places, warm kitchens, and extraordinary people.</p><div className="stats"><div><strong>15+</strong><span>years of local knowledge</span></div><div><strong>24</strong><span>community-led experiences</span></div><div><strong>100%</strong><span>tailored to you</span></div></div></section>
+    <section className="tours" id="tours"><div className="section-heading"><div><p className="eyebrow">Choose your pace</p><h2>Journeys worth taking.</h2></div><p>From wild mornings to slow afternoons, every itinerary is built around how you want to feel.</p></div><div className="tour-grid">{tours.map((tour, index) => <article className="tour-card" key={tour.id}><img src={tour.image} alt="" /><div className="tour-overlay"><span>0{index + 1}</span><div><p>{tour.region} · {tour.duration}</p><h3>{tour.name}</h3><p>{tour.text}</p><b>From {tour.price}</b></div></div></article>)}</div></section>
+    <section className="plan" id="plan"><div><p className="eyebrow">Your next chapter</p><h2>Tell us what<br /><em>moves you.</em></h2><p>Share a few details and our Rwanda-based team will shape a journey around you.</p></div><BookingForm tours={tours.map(({ id, name }) => ({ id, name }))} /></section>
+    <footer><a className="brand" href="#top"><span>RW</span> Rwanda Discovery</a><p>Made for the curious.</p><p>© 2026 Rwanda Discovery Tours</p></footer>
+  </main>
 }
